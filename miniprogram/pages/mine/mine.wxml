@@ -1,0 +1,25 @@
+<view class="page-root safe-bottom mine">
+  <view class="mine__head">
+    <view class="mine__name">我的故事</view>
+    <view class="mine__desc">这里是你创建的全部回忆录</view>
+  </view>
+
+  <view class="mine__quick">
+    <big-button text="再讲一段" theme="primary" bindtap="goRecord" />
+  </view>
+
+  <view wx:if="{{loading}}" class="empty-tip">正在加载…</view>
+  <view wx:elif="{{stories.length === 0}}" class="empty-tip">还没有故事，点「再讲一段」开始</view>
+  <view wx:else class="rows">
+    <view wx:for="{{stories}}" wx:key="_id" class="row">
+      <view class="row__main" data-id="{{item._id}}" bindtap="openStory">
+        <view class="row__title">{{item.title}}</view>
+        <view class="row__date">{{item.dateText}}</view>
+      </view>
+      <view class="row__ops">
+        <view class="row__op" data-id="{{item._id}}" catchtap="onExport">导出</view>
+        <view class="row__op row__op--danger" data-id="{{item._id}}" catchtap="onDelete">删除</view>
+      </view>
+    </view>
+  </view>
+</view>

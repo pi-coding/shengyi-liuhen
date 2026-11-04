@@ -1,0 +1,4 @@
+<view class="big-btn big-btn--{{theme}} {{disabled ? 'is-disabled' : ''}}" bindtap="onTap" hover-class="big-btn--hover" hover-stay-time="80">
+  <text class="big-btn__text">{{text}}</text>
+  <text wx:if="{{subtext}}" class="big-btn__sub">{{subtext}}</text>
+</view>

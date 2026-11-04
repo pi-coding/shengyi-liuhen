@@ -1,0 +1,83 @@
+.mine {
+  padding-bottom: 60rpx;
+}
+
+.mine__head {
+  padding: 16rpx 8rpx 30rpx;
+}
+
+.mine__name {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--color-primary-deep);
+  font-family: "Songti SC", "STSong", serif;
+}
+
+.mine__desc {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  color: var(--color-text-tertiary);
+}
+
+.mine__quick {
+  margin-bottom: 36rpx;
+}
+
+.rows {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 26rpx 32rpx;
+  border-bottom: 2rpx solid var(--color-border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.row__title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row__date {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: var(--color-text-tertiary);
+}
+
+.row__ops {
+  display: flex;
+  gap: 14rpx;
+  flex-shrink: 0;
+}
+
+.row__op {
+  font-size: 26rpx;
+  color: var(--color-accent);
+  padding: 10rpx 20rpx;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-soft);
+}
+
+.row__op--danger {
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+}

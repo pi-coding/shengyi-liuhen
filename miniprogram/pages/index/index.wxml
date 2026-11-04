@@ -1,0 +1,55 @@
+<view class="page-root safe-bottom">
+  <view class="brand">
+    <view class="brand__name">声忆留痕</view>
+    <view class="brand__desc">把长辈的声音，留成家里的故事</view>
+  </view>
+
+  <view class="cta" bindtap="goRecord" hover-class="cta--hover" hover-stay-time="80">
+    <view class="cta__body">
+      <view class="cta__title">开始讲述</view>
+      <view class="cta__desc">按住录音，松手自动变成文字</view>
+    </view>
+    <view class="cta__arrow">›</view>
+  </view>
+
+  <view class="menu">
+    <view class="menu__item" bindtap="goFamily" hover-class="menu__item--hover" hover-stay-time="80">
+      <view class="menu__body">
+        <view class="menu__label">家族记忆</view>
+        <view class="menu__meta">看看家人留下的故事</view>
+      </view>
+      <view class="menu__arrow">›</view>
+    </view>
+    <view class="menu__item" bindtap="goMine" hover-class="menu__item--hover" hover-stay-time="80">
+      <view class="menu__body">
+        <view class="menu__label">我的故事</view>
+        <view class="menu__meta">管理我创建的回忆录</view>
+      </view>
+      <view class="menu__arrow">›</view>
+    </view>
+  </view>
+
+  <view class="list-head">最近的故事</view>
+
+  <view wx:if="{{loading}}" class="empty-tip">正在加载…</view>
+  <view wx:elif="{{stories.length === 0}}" class="empty-tip">还没有回忆录，点上方「开始讲述」</view>
+  <view wx:else class="stories">
+    <view
+      wx:for="{{stories}}"
+      wx:key="_id"
+      class="story-row"
+      data-id="{{item._id}}"
+      bindtap="openStory"
+      hover-class="story-row--hover"
+      hover-stay-time="80"
+    >
+      <image wx:if="{{item.coverPhoto}}" class="story-row__cover" src="{{item.coverPhoto}}" mode="aspectFill" />
+      <view wx:else class="story-row__cover story-row__cover--ph">忆</view>
+      <view class="story-row__body">
+        <view class="story-row__title">{{item.title}}</view>
+        <view class="story-row__summary">{{item.summary || '……'}}</view>
+        <view class="story-row__date">{{item.dateText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+# 操作系统 / 编辑器
+.DS_Store
+Thumbs.db
+*.swp
+
+# 依赖
+node_modules/
+package-lock.json
+
+# 智能体与工具缓存（可能包含历史快照与密钥）
+.codeartsdoer/
+
+# 本地自动化测试产物
+.e2e/
+
+# 本地密钥（严禁提交）
+.secrets.local.json
+.env
+.env.*
+
+# 微信开发者工具私有配置
+project.private.config.json
+
+# 临时截图与日志
+Snipaste_*.png
+*.log

@@ -1,0 +1,41 @@
+<view class="page-root safe-bottom record">
+  <view class="guide">{{statusText}}</view>
+
+  <view wx:if="{{phase === 'editing' || phase === 'generating'}}" class="card edit-card">
+    <view class="edit-card__label">讲述内容</view>
+    <textarea
+      class="edit-card__area"
+      value="{{text}}"
+      bindinput="onTextInput"
+      placeholder="识别结果会出现在这里，也可以手动补写"
+      maxlength="-1"
+      auto-height
+    />
+  </view>
+
+  <view wx:if="{{phase === 'uploading' || phase === 'transcribing'}}" class="progress">
+    <view class="progress__bar"></view>
+    <text class="progress__text">正在处理，请稍候…</text>
+  </view>
+
+  <view class="recorder-wrap">
+    <view
+      class="recorder {{phase === 'recording' ? 'is-recording' : ''}} {{phase === 'generating' ? 'is-disabled' : ''}}"
+      bindtouchstart="onRecordStart"
+      bindtouchend="onRecordEnd"
+      bindtouchcancel="onRecordEnd"
+    >
+      <text class="recorder__label">{{phase === 'recording' ? '松手结束' : '按住讲述'}}</text>
+      <text wx:if="{{phase === 'recording'}}" class="recorder__time">{{seconds}} 秒</text>
+    </view>
+    <view class="recorder__hint">最长 1 分钟，松手自动变成文字</view>
+  </view>
+
+  <view wx:if="{{phase === 'editing'}}" class="actions">
+    <big-button text="生成我的回忆录" theme="accent" bindtap="onGenerate" />
+    <view class="actions__gap"></view>
+    <big-button text="重新录制" theme="ghost" bindtap="onRedo" />
+  </view>
+
+  <view wx:if="{{phase === 'generating'}}" class="empty-tip">AI 正在整理，请稍候…</view>
+</view>

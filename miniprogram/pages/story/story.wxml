@@ -1,0 +1,46 @@
+<view class="page-root story">
+  <view class="seg">
+    <view
+      wx:for="{{templates}}"
+      wx:key="value"
+      class="seg__item {{template === item.value ? 'is-active' : ''}}"
+      data-value="{{item.value}}"
+      bindtap="switchTemplate"
+    >{{item.label}}</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="empty-tip">正在打开回忆录…</view>
+  <view wx:else>
+    <view class="paper paper--{{template}}">
+      <view class="paper__title">{{story.title}}</view>
+      <view class="paper__meta">{{dateText}}</view>
+      <view class="paper__rule"></view>
+
+      <view
+        wx:for="{{chapters}}"
+        wx:key="index"
+        wx:for-item="ch"
+        wx:for-index="ci"
+        class="chapter"
+      >
+        <image wx:if="{{photos[ci]}}" class="chapter__img" src="{{photos[ci]}}" mode="widthFix" />
+        <view class="chapter__heading">{{ch.heading}}</view>
+        <block wx:for="{{ch.paragraphs}}" wx:key="index" wx:for-item="p">
+          <view class="chapter__p">{{p}}</view>
+        </block>
+      </view>
+    </view>
+
+    <view class="photos">
+      <view class="photos__title">老照片</view>
+      <view class="photos__grid">
+        <image wx:for="{{photos}}" wx:key="*this" class="photos__item" src="{{item}}" mode="aspectFill" />
+        <view class="photos__add" bindtap="onAddPhoto">＋</view>
+      </view>
+    </view>
+
+    <view class="bottom-bar">
+      <big-button text="听这段回忆" theme="primary" bindtap="goPlay" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+<view class="page-root safe-bottom play">
+  <view class="play__head">
+    <view class="play__title">{{story.title}}</view>
+    <view class="play__status">{{statusText}}</view>
+  </view>
+
+  <view class="field">
+    <text class="field__label">音色</text>
+    <picker mode="selector" range="{{voiceTypes}}" range-key="label" value="{{voiceIndex}}" bindchange="onVoiceChange">
+      <view class="field__value">{{voiceTypes[voiceIndex].label}} ▾</view>
+    </picker>
+  </view>
+
+  <view class="player">
+    <view class="player__btn {{playing ? 'is-playing' : ''}}" bindtap="togglePlay">
+      {{playing ? '暂停' : (generating ? '生成中…' : '播放朗读')}}
+    </view>
+    <view class="player__hint">{{hasRaw ? '可朗读全文，也可回放原始录音' : '点击即用普通话音色朗读全文'}}</view>
+  </view>
+
+  <view class="card script-card">
+    <view class="script-label">朗读文稿</view>
+    <view class="script">{{fullText}}</view>
+  </view>
+</view>
